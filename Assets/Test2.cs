@@ -23,25 +23,23 @@ public class Boss
     //魔法攻撃用の関数
     public void Magic(int use)
     {
-
-        for (mp = 53; mp >= 5; mp -= use)
-
-        if ( mp >= 5 )
+        if (mp >= 5)
         {
-            
             Debug.Log("魔法攻撃をした。残りMPは" + mp + "。");
-            
+            this.mp -= use;
         }
-        
-        if(mp < 5)
+
+        if (mp < 5)
         {
             Debug.Log("MPが足りないため魔法が使えない");
         }
+        
     }
 }
 
 public class Test2 : MonoBehaviour
-{
+{ 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,9 +50,16 @@ public class Test2 : MonoBehaviour
         lastboss.Attack();
         //防御用の関数を呼び出す
         lastboss.Defence(3);
-        //魔法用の関数を呼び出す
-        lastboss.Magic(5);
-    }
+
+
+
+        //魔法用の関数を呼び出す   
+        for (int i = 0; i <= 11; i++)
+        {
+            lastboss.Magic(5);
+        }
+ 
+        }
 
     // Update is called once per frame
     void Update()
